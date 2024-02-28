@@ -20,7 +20,7 @@ interface ICity {
 }
 
 router.post(
-    "/products",
+    "/cities",
     multerConfig.single("file"),
     async (request: Request, response: Response) => {
 
@@ -57,11 +57,12 @@ router.post(
         }
 
         for await (let {_id: _id, city: city, state_id: state_id, state_name: state_name} of cities){
-            await client.products.create({
+            await client.cities.create({
                 data : {
                     _id: _id,
                     city: city,
-
+                    state_id: state_id,
+                    quantity: state_name,
                 }
             });
         }
