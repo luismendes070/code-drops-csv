@@ -28,21 +28,21 @@ router.post(
         readableFile.push(buffer);
         readableFile.push(null);
 
-        const productsLine = readline.createInterface({
+        const citiesLine = readline.createInterface({
             input: readableFile
         });
 
         const cities: City[] = [];
 
-        for await (let line of productsLine){
+        for await (let line of citiesLine){
             
-            const productLineSplit = line.split(",");
+            const cityLineSplit = line.split(",");
 
             cities.push(
-                _id: productLineSplit[0],
-                city: productLineSplit[1],
-                state_id: productLineSplit[2],
-                quantity: productLineSplit[3],
+                _id: cityLineSplit[0],
+                city: cityLineSplit[1],
+                state_id: cityLineSplit[2],
+                quantity: cityLineSplit[3],
             );
         }
 
@@ -50,7 +50,7 @@ router.post(
             await client.products.create({
                 data : {
                     _id: _id,
-                    description: city,
+                    city: city,
 
                 }
             });
