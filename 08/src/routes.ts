@@ -5,6 +5,8 @@ import readline from "readline";
 
 import multer from "multer";
 
+import { client } from "./database/client";
+
 const multerConfig = multer();
 
 const router = Router();
