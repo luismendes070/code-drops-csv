@@ -11,7 +11,7 @@ const multerConfig = multer();
 
 const router = Router();
 
-interface City {
+interface ICity {
     _id: string;
     city: string;
     state_id: string;
@@ -34,7 +34,7 @@ router.post(
             input: readableFile
         });
 
-        const cities: City[] = [];
+        const cities: ICity[] = [];
 
         for await (let line of citiesLine){
             
