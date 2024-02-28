@@ -9,6 +9,13 @@ const multerConfig = multer();
 
 const router = Router();
 
+interface City {
+    _id: string;
+    city: string;
+    state_id: string;
+    state_name: string;
+}
+
 router.post(
     "/products",
     multerConfig.single("file"),
@@ -25,12 +32,32 @@ router.post(
             input: readableFile
         });
 
+        const cities: City[] = [];
+
         for await (let line of productsLine){
-            console.log(line);
+            
+            const productLineSplit = line.split(",");
+
+            cities.push(
+                _id: productLineSplit[0],
+                city: productLineSplit[1],
+                state_id: productLineSplit[2],
+                quantity: productLineSplit[3],
+            );
         }
 
-        console.log(request.file.buffer.toString("utf-8"));
-        return response.send();
+        for await (let {_id: _id, city: city, state_id: state_id, state_name: state_name} of cities){
+            await client.products.create({
+                data : {
+                    _id: _id,
+                    description: city,
+
+                }
+            });
+        }
+
+        
+        return response.json(cities);
 
     }
 );
