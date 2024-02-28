@@ -5,7 +5,8 @@ import readline from "readline";
 
 import multer from "multer";
 
-import { client } from "./database/client";
+// Copilot
+import client from "./database/client";
 
 const multerConfig = multer();
 
@@ -24,6 +25,13 @@ router.post(
     async (request: Request, response: Response) => {
 
         const { file } = request;
+
+        // Copilot
+        if (!file) {
+            // Handle missing file case
+            return response.status(400).json({ error: "No file provided" });
+        }
+
         const { buffer } = file;
 
         const readableFile = new Readable();
@@ -59,7 +67,9 @@ router.post(
         }
 
         
-        return response.json(cities);
+        // return response.json(cities);
+        // Copilot
+        return response.status(200).json({ message: "Cities processed successfully" });
 
     }
 );
