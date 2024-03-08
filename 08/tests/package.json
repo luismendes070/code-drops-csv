@@ -4,13 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "react-scripts test --env=jsdom --coverage",
+    "test:watch": "react-scripts test --env=jsdom --watch",
+    "test:ci": "react-scripts test --env=jsdom --coverage --watchAll=false",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
-    "jest-environment-jsdom": "^29.7.0"
+    "eslint": "^8.57.0",
+    "eslint-config-react-app": "^7.0.1",
+    "jest-environment-jsdom": "^29.7.0",
+    "react-scripts": "^5.0.1"
   }
 }

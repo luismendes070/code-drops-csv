@@ -46,31 +46,22 @@ router.post(
 
         for await (let line of citiesLine){
             
-            const cityLineSplit = line.split(",");
+            const cityLineSplit:any = line.split(",");
+
+            console.log(cityLineSplit[line]);
 
             cities.push(
-                _id: cityLineSplit[0],
-                city: cityLineSplit[1],
-                state_id: cityLineSplit[2],
-                quantity: cityLineSplit[3],
+                cityLineSplit[0],
+                cityLineSplit[1],
+                cityLineSplit[2],
+                cityLineSplit[3],
             );
-        }
-
-        for await (let {_id: _id, city: city, state_id: state_id, state_name: state_name} of cities){
-            await client.cities.create({
-                data : {
-                    _id: _id,
-                    city: city,
-                    state_id: state_id,
-                    quantity: state_name,
-                }
-            });
         }
 
         
         // return response.json(cities);
         // Copilot
-        return response.status(200).json({ message: "Cities processed successfully" });
+        return response.send() && response.status(200).json({ message: "Cities processed successfully" });
 
     }
 );
