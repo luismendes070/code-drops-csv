@@ -50,12 +50,12 @@ router.post(
 
             console.log(cityLineSplit[line]);
 
-            cities.push(
-                cityLineSplit[0],
-                cityLineSplit[1],
-                cityLineSplit[2],
-                cityLineSplit[3],
-            );
+            cities.push({
+                    _id: cityLineSplit[0],
+                    city: cityLineSplit[1],
+                    state_id: cityLineSplit[2],
+                    state_name: cityLineSplit[3],
+                });
         }
 
         
