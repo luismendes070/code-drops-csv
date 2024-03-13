@@ -21,7 +21,7 @@ app.get('/api/csv-to-json', (req:any, res:any) => {
 
   // Gemini Set content type
   res.setHeader('Content-Type', 'text/csv');
-  res.setHeader('Content-Disposition', 'attachment; filename=data.csv');
+  res.setHeader('Content-Disposition', 'attachment; filename=uscities-data.csv');
 
   // Gemini Read file contents
   fs.readFile('uscities-data.csv', (err, data) => {
