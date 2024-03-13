@@ -19,6 +19,21 @@ app.use(errorHandler);
 app.get('/api/csv-to-json', (req:any, res:any) => {
   const results:any = [];
 
+  // Gemini Set content type
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename=data.csv');
+
+  // Gemini Read file contents
+  fs.readFile('uscities-data.csv', (err, data) => {
+    if (err) {
+      // Gemini Handle error (e.g., file not found)
+      console.error(err);
+      res.sendStatus(500); // Gemini Internal Server Error
+    } else {
+      res.send(data.toString()); // Gemini Convert buffer to string
+    }
+  });
+
   fs.createReadStream('uscities-data.csv')
       .pipe(csv())
       .on('data', (data) => results.push(data))
