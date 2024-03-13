@@ -8,7 +8,7 @@ USER appuser
 COPY app.py .
 ENV API_KEY=hi_mon
 EXPOSE 8000
-CMD ["python3", "-m", "htpp.server", "8000"]
+CMD ["python3", "-m", "http.server", "8000"]
 
 # dockerhub
 FROM alpine:3.19
