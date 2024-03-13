@@ -3,7 +3,7 @@
 import { useSWR } from 'swr';
 
 const MyComponent = () => {
-  const { data, error } = useSWR('/api/your-csv-route', async (url) => {
+  const { data, error } = useSWR('/api/your-csv-route', async (url: string | URL | Request) => {
     const res = await fetch(url);
     // Handle errors
     if (!res.ok) {
