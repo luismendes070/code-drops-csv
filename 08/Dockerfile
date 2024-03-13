@@ -1,3 +1,12 @@
+# Fireship 100+ Docker Concepts you Need to Know https://youtu.be/rIrNIzy6U_g?si=nO3PboC0iKEW3Lm6
+FROM debian:bullseye-20240211
+WORKDIR /usr/src
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
+RUN useradd --create-home appuser
+USER appuser
+
+# dockerhub
 FROM alpine:3.19
 
 ENV NODE_VERSION 20.11.1
