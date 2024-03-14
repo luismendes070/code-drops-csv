@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "author": {
+    "name": "Luis Mendes",
+    "email": "machadoluismendes@gmail.com",
+    "url": "https://luismendesmachadoblog.wordpress.com/"
+  },
+  "license": "Apache-2.0",
   "dependencies": {
     "next": "14.1.3",
     "react": "^18",
