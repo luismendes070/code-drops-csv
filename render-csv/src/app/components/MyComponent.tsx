@@ -1,6 +1,6 @@
 // Gemini In your component
 
-import { useSWR } from 'swr';
+import useSWR from 'swr';
 
 const MyComponent = () => {
   const { data, error } = useSWR('/api/your-csv-route', async (url: string | URL | Request) => {
